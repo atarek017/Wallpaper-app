@@ -13,6 +13,6 @@ class IconAssets {
 
 class JsonAssets {
   static const String emptyUI = "$jsonPath/empty.json";
-  static const String loadingUI = "$jsonPath/loading.json";
+  static const String loadingUI = "$jsonPath/load.json";
 
 }
