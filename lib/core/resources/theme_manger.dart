@@ -11,13 +11,14 @@ ThemeData getApplicationTheme() {
     primaryColor: Colors.black,
     dividerColor: Colors.white54,
     primaryIconTheme: const IconThemeData(color: Colors.black87),
-    iconTheme: const IconThemeData(color: Colors.white),
+    iconTheme: IconThemeData(color: ColorManger.white),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: Colors.black,
         selectedItemColor: ColorManger.mainColor,
         selectedIconTheme: IconThemeData(color: ColorManger.mainColor),
-        unselectedIconTheme: const IconThemeData(color: Colors.white)),
+        unselectedIconTheme: IconThemeData(color: ColorManger.white)),
 
+    hintColor: ColorManger.hintColor,
     //input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
@@ -27,12 +28,14 @@ ThemeData getApplicationTheme() {
 
       // enabled border style
       enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorManger.white, width: AppSize.s1),
+          borderSide:
+              BorderSide(color: ColorManger.textFieldBorder, width: AppSize.s1),
           borderRadius: const BorderRadius.all(Radius.circular(AppSize.s16))),
 
       // focused border style
       focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorManger.white, width: AppSize.s1),
+          borderSide:
+              BorderSide(color: ColorManger.textFieldBorder, width: AppSize.s1),
           borderRadius: const BorderRadius.all(Radius.circular(AppSize.s16))),
 
       // focused border style

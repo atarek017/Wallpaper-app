@@ -14,31 +14,26 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0.25,
+      elevation: 0,
+      backgroundColor: Colors.transparent,
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: AppSize.s10),
-          child: BlocBuilder<SearchBloc, SearchState>(
-            builder: (context, state) {
-              return GestureDetector(
-                  onTap: () {
-                    context.read<SearchBloc>().add(
-                          SearchPhotoEvent(
-                            SearchRequestEntity(
-                              query: context
-                                  .read<SearchBloc>()
-                                  .searchController
-                                  .text,
-                            ),
-                          ),
-                        );
-                  },
-                  child: SvgPicture.asset(
-                    IconAssets.search,
-                    height: 25.0,
-                    width: 25.0,
-                  ));
+          child: GestureDetector(
+            onTap: () {
+              context.read<SearchBloc>().add(
+                    SearchPhotoEvent(
+                      SearchRequestEntity(
+                        query: context.read<SearchBloc>().searchController.text,
+                      ),
+                    ),
+                  );
             },
+            child: SvgPicture.asset(
+              IconAssets.search,
+              height: 25.0,
+              width: 25.0,
+            ),
           ),
         )
       ],
@@ -52,6 +47,15 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
             ),
           ),
           controller: context.read<SearchBloc>().searchController,
+          onEditingComplete: () {
+            context.read<SearchBloc>().add(
+                  SearchPhotoEvent(
+                    SearchRequestEntity(
+                      query: context.read<SearchBloc>().searchController.text,
+                    ),
+                  ),
+                );
+          },
         ),
       ),
     );
