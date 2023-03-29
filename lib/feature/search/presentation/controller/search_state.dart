@@ -4,7 +4,9 @@ abstract class SearchState {}
 
 class SearchInitial extends SearchState {}
 
-class   SearchPhotoSuccess extends SearchState {
+class SearchPhotoEmpty extends SearchState {}
+
+class SearchPhotoSuccess extends SearchState {
   List<PhotoEntity> photosList;
 
   SearchPhotoSuccess(this.photosList);

@@ -5,6 +5,7 @@ abstract class FavouriteState {}
 class FavouriteInitial extends FavouriteState {}
 
 class FavouriteLoading extends FavouriteState {}
+class FavouriteEmpty extends FavouriteState {}
 
 class FavouriteFailure extends FavouriteState {
   Failure failure;

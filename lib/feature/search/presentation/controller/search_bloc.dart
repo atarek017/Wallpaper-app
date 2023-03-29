@@ -30,9 +30,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       }, (photoResponse) {
         _hasNextPage = photoResponse.hasNextPage;
         _photoList = photoResponse.photos;
-        emit(
-          SearchPhotoSuccess(_photoList),
-        );
+
+        if (photoResponse.photos.isNotEmpty) {
+          emit(
+            SearchPhotoSuccess(_photoList),
+          );
+        } else {
+          emit(SearchPhotoEmpty());
+        }
       });
     });
 

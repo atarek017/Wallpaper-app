@@ -13,7 +13,6 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
   GetFaveImageUseCase getFaveImageUseCase;
 
   FavouriteBloc(this.getFaveImageUseCase) : super(FavouriteInitial()) {
-
     /// get photos
     on<GetFavPhoto>((event, emit) async {
       emit(FavouriteLoading());
@@ -22,9 +21,13 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
       response.fold((failure) {
         emit(FavouriteFailure(failure));
       }, (photoList) {
-        emit(
-          FavouriteSuccess(photoList),
-        );
+        if (photoList.isNotEmpty) {
+          emit(
+            FavouriteSuccess(photoList),
+          );
+        } else {
+          emit(FavouriteEmpty());
+        }
       });
     });
   }
